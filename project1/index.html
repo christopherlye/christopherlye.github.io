@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snake Snack © 2019 | Chris Lye</title>
+    <script type="text/javascript" src="app.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" href="images/snake-snack-favicon-1.png" type="image/gif" sizes="16x16">
+</head>
+<body>
+    <div id="section1">
+        <img id="intro-img" src="images/snake-snack2.gif" alt="Snake Snack Intro Image">
+        <h5 id="creds">Snake Snack © 2019  - written by Christopher Lye</h5>
+        <button id="play-now">play now</button>
+    </div>
+    <div id="section2">
+        <div id="instructions">
+            <h2>Instructions</h2>
+        </div>
+        <div id="instructions-outer-container">""
+            <div id="instructions-inner-container">
+                <h3 id="objective" class="orange">Objective</h3>
+                <p>The objective of the game is simple. The first player who scores 50 points wins a round. The game ends when a player wins 3 rounds.</p>
+                <h3 id="how-to-score" class="blue">How to Score Points</h3>
+                <p>Each <span class="green-sweet">green sweet</span> gives you one point while each <span class="red-sweet">red sweet</span> gives your OPPONENT 5 points (wait whuttt...)</p>
+                <h3 id="the-catch" class="orange">The Catch</h3>
+                <p>Eating a <span class="red-sweet">red sweet</span> makes your opponent longer AND slower (so you can go ahead and eat more <span class="green-sweet">green sweets</span> to score points)</p>
+                <h3 id="moving" class="blue">Moving</h3>
+                <p>Use the W, A, S, D or the directional arrow keys to move the snakes</p>
+                <p id="note" class="orange">Avoid hitting yourself or your opponent!</p>
+            </div>
+        </div>
+        <button id="start-game">start game</button>
+    </div>
+    <div id="section3">
+        <div id="snake-snack">
+            <h2>Snake Snack</h2>
+        </div>
+        <div id="contains-three">
+            <div id="left-outer">
+                <div id="left-inner" class="inner">
+                    <div id="left-name" class="name">
+                        <h3 id="blue-snake">Blue<br/>Snake</h3>
+                    </div>
+                    <div id="left-score" class="score">
+                        <h5>Score</h5>
+                        <div class="both-scores">
+                            <h2 id="blue-currentScore">0</h2>
+                        </div>
+                    </div>
+                    <div id="left-rounds-won" class="rounds-won">
+                        <h5>Rounds Won</h5>
+                        <h3 id="blue-roundsWon" class="both-rounds-won">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div id="mid-outer">
+                <div id="canvas-game">
+                    <canvas id="ctx" width="500" height="500"></canvas>
+                </div>
+            </div>
+            <div id="right-outer">
+                <div id="right-inner" class="inner">
+                    <div id="right-name" class="name">
+                        <h3 id="orange-snake">Orange Snake</h3>
+                    </div>
+                    <div id="right-score" class="score">
+                        <h5>Score</h5>
+                        <div class="both-scores">
+                            <h2 id="orange-currentScore">0</h2>
+                        </div>
+                    </div>
+                    <div id="right-rounds-won" class="rounds-won">
+                        <h5>Rounds Won</h5>
+                        <h3 id="orange-roundsWon" class="both-rounds-won">0</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="reset-game">reset game</button>
+    </div>
+    <div id="section4">
+
+    </div>
+    <audio id="winning-sound">
+        <source src="sounds/little_robot_sound_factory_Jingle_Win_Synth_06.mp3" type="audio/mpeg" display="none">
+    </audio>
+    <audio id="munching-sound">
+        <source src="sounds/zapsplat_cartoon_bite_crunch_eat_13015.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="uh-oh-sound">
+        <source src="sounds/zapsplat_cartoon_character_voice_male_high_pitched_says_uh_oh_002_22828.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="yay-sound">
+        <source src="sounds/human_crowd_25_people_cheer_shout_yay.mp3" type="audio/mpeg">
+    </audio>
+</body>
+<footer>
+
+</footer>
+</html>
