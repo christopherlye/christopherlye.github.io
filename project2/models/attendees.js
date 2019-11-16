@@ -1,0 +1,27 @@
+// ---------------------------------------------------------------- //
+//                          Dependencies
+// ---------------------------------------------------------------- //
+
+const mongoose = require("mongoose"); //require mongoose
+const Schema = mongoose.Schema; // create shorthand for mongoose Schema constructor
+
+// ---------------------------------------------------------------- //
+//                          Schema
+// ---------------------------------------------------------------- //
+
+const attendeeSchema = new Schema(
+  {
+    firstName: { type: String, required: true, unique: true },
+    lastName: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    mobile: { type: Number, required: true, unique: true },
+    attendance: { type: Boolean }
+  },
+  { timestamps: true }
+);
+
+// ---------------------------------------------------------------- //
+//                          Exports
+// ---------------------------------------------------------------- //
+
+module.exports = mongoose.model("Attendees", attendeeSchema);
