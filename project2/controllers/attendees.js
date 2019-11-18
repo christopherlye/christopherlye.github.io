@@ -24,8 +24,15 @@ attendeesRouter.get("/", (req, res) => {
     if (err) {
       console.log(err.message);
     } else {
-      res.render("./attendees/index.ejs", {
-        attendees: allAttendees
+      Groups.find({}, (error, allGroups) => {
+        if (error) {
+          console.log(error.message);
+        } else {
+          res.render("./attendees/index.ejs", {
+            attendees: allAttendees,
+            groups: allGroups
+          });
+        }
       });
     }
   });
@@ -92,10 +99,21 @@ attendeesRouter.get("/:id", (req, res) => {
       res.redirect("/" + req.params.id);
     } else {
       Groups.find({ _id: attendee[0].group }, (error, group) => {
-        res.render("./attendees/show.ejs", {
-          attendee: attendee[0],
-          group: group[0]
-        });
+        if (error) {
+          console.log(error.message);
+        } else {
+          if (group[0] === undefined) {
+            res.render("./attendees/show.ejs", {
+              attendee: attendee[0],
+              group: { name: "Assign a new group" }
+            });
+          } else {
+            res.render("./attendees/show.ejs", {
+              attendee: attendee[0],
+              group: group[0]
+            });
+          }
+        }
       });
     }
   });
@@ -124,9 +142,6 @@ attendeesRouter.put("/edit/:id", (req, res) => {
     req.body.attendance = true;
   } else {
     req.body.attendance = false;
-  }
-  if (req.body.group) {
-    console.log(req.body.group);
   }
   Attendees.find({ _id: req.params.id }, (err, attendee) => {
     if (err) {

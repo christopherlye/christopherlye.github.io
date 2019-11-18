@@ -25,6 +25,14 @@
             <li>
               <% if (attendees[i].attendance) { %> Yes <% } else { %> No <% } %>
             </li>
+
+            <% for (let j = 0; j < groups.length; j++) { %> <% if
+            (JSON.stringify(attendees[i].group) ===
+            JSON.stringify(groups[j]._id)) { %>
+            <li>
+              <%=groups[j].name%>
+            </li>
+            <% } else { %><% } %> <% } %>
           </ul>
         </div>
         <br />

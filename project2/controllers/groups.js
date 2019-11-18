@@ -33,14 +33,17 @@ groupsRouter.get("/new", (req, res) => {
   res.render("../views/groups/new.ejs");
 });
 
-// Seed
-groupsRouter.get("/seed", (req, res) => {
-  res.send("add group seed data");
-});
-
-// Delete
-groupsRouter.get("/deleteAll", (req, res) => {
-  res.send("to delete all group data");
+// Edit
+groupsRouter.get("/edit/:id", (req, res) => {
+  Groups.find({ _id: req.params.id }, (err, group) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      res.render("../views/groups/edit.ejs", {
+        group: group[0]
+      });
+    }
+  });
 });
 
 // Show
@@ -52,7 +55,6 @@ groupsRouter.get("/:id", (req, res) => {
       res.render("../views/groups/show.ejs", {
         group: group[0]
       });
-      // res.send("working");
     }
   });
 });
@@ -68,6 +70,43 @@ groupsRouter.post("/new", (req, res) => {
     } else {
       console.log(allGroups);
       res.redirect("/wedding/groups");
+    }
+  });
+});
+
+// Update
+groupsRouter.put("/edit/:id", (req, res) => {
+  Groups.find({ _id: req.params.id }, (err, group) => {
+    if (err) {
+      console.log(err.message);
+      res.redirect("/wedding/groups/");
+    } else {
+      Groups.updateOne({ _id: req.params.id }, req.body, (error, group) => {
+        if (error) {
+          console.log(error.message);
+        } else {
+          console.log(group);
+          res.redirect("/wedding/groups/" + req.params.id);
+        }
+      });
+    }
+  });
+});
+
+// Delete
+groupsRouter.delete("/:id", (req, res) => {
+  Groups.find({}, (err, group) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      Groups.deleteOne({ _id: req.params.id }, (error, data) => {
+        if (error) {
+          console.log(error.message);
+        } else {
+          console.log(data);
+          res.redirect("/wedding/groups");
+        }
+      });
     }
   });
 });

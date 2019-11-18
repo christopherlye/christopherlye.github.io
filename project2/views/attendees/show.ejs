@@ -16,7 +16,11 @@
         Attendance: <% if (attendee.attendance) { %> Yes <% } else { %> No <% }
         %>
       </li>
-      <li>Group: <%=group.name%></li>
+      <li>
+        Group: <% if (group.name === 'Assign a new group') { %>
+        <a href="/wedding/attendees/edit/<%=attendee._id%>">Assign a group</a>
+        <% } else { %> <%=group.name%> <% } %>
+      </li>
     </ul>
     <a href="/wedding/attendees/edit/<%=attendee._id%>"
       ><button>Edit</button></a

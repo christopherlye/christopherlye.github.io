@@ -8,11 +8,14 @@
   </head>
   <body>
     <h1>Show Groups</h1>
-    <a href="/wedding/groups/"><button>Back to Groups</button></a>
-    <br />
-    <br />
     Group Name: <%=group.name%>
     <br />
-    Group ID: <%=group._id%>
+    <br />
+    <a href="/wedding/groups/edit/<%=group._id%>"><button>Edit</button></a>
+    <form action="/wedding/groups/<%=group._id%>?_method=DELETE" method="POST">
+      <input type="submit" name="delete" id="delete" value="Delete" />
+    </form>
+    <br />
+    <a href="/wedding/groups/">Back</a>
   </body>
 </html>

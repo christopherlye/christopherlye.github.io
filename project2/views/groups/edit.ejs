@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Edit Group</title>
+  </head>
+  <body>
+    <h1>Edit Group</h1>
+    <form
+      action="/wedding/groups/edit/<%=group._id%>?_method=PUT"
+      method="POST"
+    >
+      <ul>
+        <li>
+          Group Name:
+          <input type="text" name="name" value="<%=group.name%>" />
+        </li>
+      </ul>
+      <input type="submit" name="submit" value="Update" />
+    </form>
+    <br />
+    <br />
+    <a href="/wedding/groups/<%=group._id%>">Back</a>
+  </body>
+</html>
