@@ -12,6 +12,7 @@ const attendeesRouter = express.Router();
 
 const Attendees = require("../models/attendees.js");
 const AttendeeSeed = require("../models/seed.js");
+const Groups = require("../models/groups.js");
 
 // ---------------------------------------------------------------- //
 //                              Get Routes
@@ -32,7 +33,15 @@ attendeesRouter.get("/", (req, res) => {
 
 // New
 attendeesRouter.get("/new", (req, res) => {
-  res.render("./attendees/new.ejs");
+  Groups.find({}, (err, allGroups) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      res.render("./attendees/new.ejs", {
+        groups: allGroups
+      });
+    }
+  });
 });
 
 // Delete All

@@ -16,7 +16,7 @@ const attendeeSchema = new Schema(
     email: { type: String, required: true, unique: true },
     mobile: { type: Number, required: true, unique: true },
     attendance: { type: Boolean },
-    group: [{ type: Schema.Types.ObjectId, ref: "Groups" }]
+    group: { type: Schema.Types.ObjectId, ref: "Groups" }
   },
   { timestamps: true }
 );

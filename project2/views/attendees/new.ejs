@@ -26,9 +26,9 @@
       <br />
       <label for="group">Group</label>
       <select name="group" id="group">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <% for (let i = 0; i < groups.length; i ++) { %>
+        <option value="<%=groups[i]._id%>"><%=groups[i].name%></option>
+        <% } %>
       </select>
       <br />
       <input type="submit" name="submit" value="Add" />
