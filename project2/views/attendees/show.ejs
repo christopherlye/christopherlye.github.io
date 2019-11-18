@@ -16,7 +16,7 @@
         Attendance: <% if (attendee.attendance) { %> Yes <% } else { %> No <% }
         %>
       </li>
-      <li>Group:</li>
+      <li>Group: <%=group.name%></li>
     </ul>
     <a href="/wedding/attendees/edit/<%=attendee._id%>"
       ><button>Edit</button></a

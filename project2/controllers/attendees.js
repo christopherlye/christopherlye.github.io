@@ -70,8 +70,15 @@ attendeesRouter.get("/edit/:id", (req, res) => {
       console.log(err.message);
       res.redirect("/" + req.params.id);
     } else {
-      res.render("./attendees/edit.ejs", {
-        attendee: attendee[0]
+      Groups.find({}, (err, allGroups) => {
+        if (err) {
+          console.log(err.message);
+        } else {
+          res.render("./attendees/edit.ejs", {
+            attendee: attendee[0],
+            groups: allGroups
+          });
+        }
       });
     }
   });
@@ -84,8 +91,11 @@ attendeesRouter.get("/:id", (req, res) => {
       console.log(err.message);
       res.redirect("/" + req.params.id);
     } else {
-      res.render("./attendees/show.ejs", {
-        attendee: attendee[0]
+      Groups.find({ _id: attendee[0].group }, (error, group) => {
+        res.render("./attendees/show.ejs", {
+          attendee: attendee[0],
+          group: group[0]
+        });
       });
     }
   });
@@ -114,6 +124,9 @@ attendeesRouter.put("/edit/:id", (req, res) => {
     req.body.attendance = true;
   } else {
     req.body.attendance = false;
+  }
+  if (req.body.group) {
+    console.log(req.body.group);
   }
   Attendees.find({ _id: req.params.id }, (err, attendee) => {
     if (err) {
