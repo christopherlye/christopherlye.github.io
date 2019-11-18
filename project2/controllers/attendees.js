@@ -23,7 +23,7 @@ attendeesRouter.get("/", (req, res) => {
     if (err) {
       console.log(err.message);
     } else {
-      res.render("index.ejs", {
+      res.render("./attendees/index.ejs", {
         attendees: allAttendees
       });
     }
@@ -32,7 +32,7 @@ attendeesRouter.get("/", (req, res) => {
 
 // New
 attendeesRouter.get("/new", (req, res) => {
-  res.render("new.ejs");
+  res.render("./attendees/new.ejs");
 });
 
 // Delete All
@@ -61,7 +61,7 @@ attendeesRouter.get("/edit/:id", (req, res) => {
       console.log(err.message);
       res.redirect("/" + req.params.id);
     } else {
-      res.render("edit.ejs", {
+      res.render("./attendees/edit.ejs", {
         attendee: attendee[0]
       });
     }
@@ -75,7 +75,7 @@ attendeesRouter.get("/:id", (req, res) => {
       console.log(err.message);
       res.redirect("/" + req.params.id);
     } else {
-      res.render("show.ejs", {
+      res.render("./attendees/show.ejs", {
         attendee: attendee[0]
       });
     }
@@ -94,6 +94,7 @@ attendeesRouter.post("/new", (req, res) => {
     req.body.attendance = false;
   }
   Attendees.create(req.body, (err, data) => {
+    console.log(req.body);
     res.redirect("/wedding/attendees/");
   });
 });

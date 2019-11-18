@@ -28,6 +28,13 @@ app.use(methodOverride("_method"));
 // to scale up to be able to do something like /:eventName/attendees
 const attendeesController = require("./controllers/attendees.js");
 app.use("/wedding/attendees", attendeesController);
+const groupsController = require("./controllers/groups.js");
+app.use("/wedding/groups", groupsController);
+
+// ---------------------------------------------------------------- //
+//                          Models
+// ---------------------------------------------------------------- //
+const AttendeeGroups = require("./models/groups.js");
 
 // ---------------------------------------------------------------- //
 //                          MongoDB Config

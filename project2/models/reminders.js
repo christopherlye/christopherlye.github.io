@@ -9,14 +9,11 @@ const Schema = mongoose.Schema; // create shorthand for mongoose Schema construc
 //                          Schema
 // ---------------------------------------------------------------- //
 
-const attendeeSchema = new Schema(
+const remindersSchema = new Schema(
   {
-    firstName: { type: String, required: true, unique: true },
-    lastName: { type: String, required: true, unique: true },
-    email: { type: String, required: true, unique: true },
-    mobile: { type: Number, required: true, unique: true },
-    attendance: { type: Boolean },
-    group: [{ type: Schema.Types.ObjectId, ref: "Groups" }]
+    reminderName: { type: String, required: true, unique: true },
+    active: { type: Boolean, required: true },
+    attendeeGroup: [{ type: String, required: true }]
   },
   { timestamps: true }
 );
@@ -25,4 +22,4 @@ const attendeeSchema = new Schema(
 //                          Exports
 // ---------------------------------------------------------------- //
 
-module.exports = mongoose.model("Attendees", attendeeSchema);
+module.exports = mongoose.model("Reminders", remindersSchema);
