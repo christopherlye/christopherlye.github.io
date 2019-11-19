@@ -11,7 +11,7 @@ const attendeesRouter = express.Router();
 // ---------------------------------------------------------------- //
 
 const Attendees = require("../models/attendees.js");
-const AttendeeSeed = require("../models/seed.js");
+const AttendeeSeed = require("../seed/seed.js");
 const Groups = require("../models/groups.js");
 
 // ---------------------------------------------------------------- //
@@ -20,103 +20,128 @@ const Groups = require("../models/groups.js");
 
 // Index
 attendeesRouter.get("/", (req, res) => {
-  Attendees.find({}, (err, allAttendees) => {
-    if (err) {
-      console.log(err.message);
-    } else {
-      Groups.find({}, (error, allGroups) => {
-        if (error) {
-          console.log(error.message);
-        } else {
-          res.render("./attendees/index.ejs", {
-            attendees: allAttendees,
-            groups: allGroups
-          });
-        }
-      });
-    }
-  });
+  // if user is logged in
+  if (req.session.currentUser) {
+    Attendees.find({}, (err, allAttendees) => {
+      if (err) {
+        console.log(err.message);
+      } else {
+        Groups.find({}, (error, allGroups) => {
+          if (error) {
+            console.log(error.message);
+          } else {
+            res.render("./attendees/index.ejs", {
+              attendees: allAttendees,
+              groups: allGroups
+            });
+          }
+        });
+      }
+    });
+  } else {
+    res.redirect("/sessions/new");
+  }
 });
 
 // New
 attendeesRouter.get("/new", (req, res) => {
-  Groups.find({}, (err, allGroups) => {
-    if (err) {
-      console.log(err.message);
-    } else {
-      res.render("./attendees/new.ejs", {
-        groups: allGroups
-      });
-    }
-  });
+  if (req.session.currentUser) {
+    Groups.find({}, (err, allGroups) => {
+      if (err) {
+        console.log(err.message);
+      } else {
+        res.render("./attendees/new.ejs", {
+          groups: allGroups
+        });
+      }
+    });
+  } else {
+    res.redirect("/sessions/new");
+  }
 });
 
 // Delete All
 attendeesRouter.get("/deleteAll", (req, res) => {
-  Attendees.collection.drop();
-  res.redirect("/wedding/attendees");
+  if (req.session.currentUser) {
+    Attendees.collection.drop();
+    res.redirect("/wedding/attendees");
+  } else {
+    res.redirect("/sessions/new");
+  }
 });
 
 // Seed
 // Create seed data - add once only
 attendeesRouter.get("/seed", (req, res) => {
-  Attendees.create(AttendeeSeed, (err, data) => {
-    if (err) {
-      console.log(err.message);
-    } else {
-      console.log("added attendee seed data");
-    }
-  });
-  res.redirect("/wedding/attendees");
+  if (req.session.currentUser) {
+    Attendees.create(AttendeeSeed, (err, data) => {
+      if (err) {
+        console.log(err.message);
+      } else {
+        console.log("added attendee seed data");
+      }
+    });
+    res.redirect("/wedding/attendees");
+  } else {
+    res.redirect("/sessions/new");
+  }
 });
 
 // Edit
 attendeesRouter.get("/edit/:id", (req, res) => {
-  Attendees.find({ _id: req.params.id }, (err, attendee) => {
-    if (err) {
-      console.log(err.message);
-      res.redirect("/" + req.params.id);
-    } else {
-      Groups.find({}, (err, allGroups) => {
-        if (err) {
-          console.log(err.message);
-        } else {
-          res.render("./attendees/edit.ejs", {
-            attendee: attendee[0],
-            groups: allGroups
-          });
-        }
-      });
-    }
-  });
+  if (req.session.currentUser) {
+    Attendees.find({ _id: req.params.id }, (err, attendee) => {
+      if (err) {
+        console.log(err.message);
+        res.redirect("/" + req.params.id);
+      } else {
+        Groups.find({}, (err, allGroups) => {
+          if (err) {
+            console.log(err.message);
+          } else {
+            res.render("./attendees/edit.ejs", {
+              attendee: attendee[0],
+              groups: allGroups
+            });
+          }
+        });
+      }
+    });
+  } else {
+    res.redirect("/sessions/new");
+  }
 });
 
 // Show
 attendeesRouter.get("/:id", (req, res) => {
-  Attendees.find({ _id: req.params.id }, (err, attendee) => {
-    if (err) {
-      console.log(err.message);
-      res.redirect("/" + req.params.id);
-    } else {
-      Groups.find({ _id: attendee[0].group }, (error, group) => {
-        if (error) {
-          console.log(error.message);
-        } else {
-          if (group[0] === undefined) {
-            res.render("./attendees/show.ejs", {
-              attendee: attendee[0],
-              group: { name: "Assign a new group" }
-            });
+  if (req.session.currentUser) {
+    Attendees.find({ _id: req.params.id }, (err, attendee) => {
+      if (err) {
+        console.log(err.message);
+        res.redirect("/" + req.params.id);
+      } else {
+        Groups.find({ _id: attendee[0].group }, (error, group) => {
+          if (error) {
+            console.log(error.message);
           } else {
-            res.render("./attendees/show.ejs", {
-              attendee: attendee[0],
-              group: group[0]
-            });
+            if (group[0] === undefined) {
+              res.render("./attendees/show.ejs", {
+                attendee: attendee[0],
+                group: { name: "Assign a new group" }
+              });
+            } else {
+              res.render("./attendees/show.ejs", {
+                attendee: attendee[0],
+                group: group[0]
+              });
+            }
           }
-        }
-      });
-    }
-  });
+        });
+      }
+    });
+  } else {
+    res.redirect("/sessions/new");
+  }
 });
 
 // ---------------------------------------------------------------- //

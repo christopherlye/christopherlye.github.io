@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  </head>
+  <body>
+    <div class="container">
+<h1>
+  <% if(currentUser) { %>
+    Welcome <%=currentUser.username%>!
+  </h1>
+  <form action="/sessions?_method=DELETE" method="POST">
+    <input type="submit" value="Logout" class="waves-effect waves-light btn"/>
+</form>
+    <h2>
+      <a class="waves-effect waves-light btn" href="/wedding/attendees">Attend the wedding</a>
+    </h2>
+  <% } else { %>
+    <h2>Please </h2>
+    <a class="waves-effect waves-light btn" href="/users/new">Sign Up</a></h2>
+    <h3>or</h3>
+    <a class="waves-effect waves-light btn" href="/sessions/new">Log In</a>
+  <% } %>
+    </div>
+  </body>
+</html>
