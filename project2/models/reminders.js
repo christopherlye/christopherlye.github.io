@@ -13,7 +13,8 @@ const remindersSchema = new Schema(
   {
     reminderName: { type: String, required: true, unique: true },
     active: { type: Boolean, required: true },
-    attendeeGroup: [{ type: String, required: true }]
+    attendeeGroup: { type: String, required: true },
+    message: { type: String, required: true }
   },
   { timestamps: true }
 );

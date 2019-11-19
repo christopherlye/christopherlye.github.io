@@ -68,6 +68,8 @@ const usersController = require("./controllers/users.js");
 app.use("/users", usersController);
 const sessionsController = require("./controllers/sessions.js");
 app.use("/sessions", sessionsController);
+const remindersController = require("./controllers/reminders.js");
+app.use("/reminders", remindersController);
 
 // ---------------------------------------------------------------- //
 //                              Get Routes
