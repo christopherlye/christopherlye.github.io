@@ -4,6 +4,7 @@
 
 const express = require("express");
 const sessionsRouter = express.Router();
+const bcrypt = require("bcrypt");
 
 // ---------------------------------------------------------------- //
 //                          Models
@@ -35,7 +36,8 @@ sessionsRouter.post("/", (req, res) => {
     } else if (!foundUser) {
       res.send("user not found!");
     } else {
-      if (req.body.password == foundUser.password) {
+      // compareSync function will return true or false and will be determining if the passwords match.
+      if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;
         res.redirect("/");
         // if passwords don't match, handle the error
