@@ -8,19 +8,33 @@
   </head>
   <body>
     <h1>Edit Reminder</h1>
-    <form action="/wedding/reminders/edit/1" method="POST">
-      <label for="name">Name</label>
-      <input type="text" name="name" />
-      <br />
-      <label for="active">Active?</label>
-      <input type="checkbox" name="active" />
-      <br />
-      <label for="attendeeGroup">Attendee Group</label>
-      <input type="text" name="attendeeGroup" />
-      <br />
-      <label for="message">Message</label>
-      <input type="text" name="message" />
-      <br />
+    <form
+      action="/wedding/reminders/edit/<%=reminder._id%>?_method=PUT"
+      method="POST"
+    >
+      <li>
+        <label for="name">Name</label>
+        <input type="text" name="name" value="<%=reminder.name%>" />
+      </li>
+      <li>
+        Active: <% if (reminder.active) { %>
+        <input type="checkbox" name="active" checked />
+        <% } else { %>
+        <input type="checkbox" name="active" />
+        <% } %>
+      </li>
+      <li>
+        <label for="attendeeGroup">Attendee Group</label>
+        <input
+          type="text"
+          name="attendeeGroup"
+          value="<%=reminder.attendeeGroup%>"
+        />
+      </li>
+      <li>
+        <label for="message">Message</label>
+        <input type="text" name="message" value="<%=reminder.message%>" />
+      </li>
       <br />
       <input type="submit" name="submit" value="Create" />
     </form>

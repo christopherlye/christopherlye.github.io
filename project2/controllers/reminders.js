@@ -17,12 +17,12 @@ const Reminders = require("../models/reminders.js");
 
 // Index
 remindersRouter.get("/", (req, res) => {
-  Reminders.find({}, (err, allReminders) => {
+  Reminders.find({}, (err, reminders) => {
     if (err) {
       console.log(err.message);
     } else {
       res.render("../views/reminders/index.ejs", {
-        reminders: allReminders
+        reminders: reminders
       });
     }
   });
@@ -35,12 +35,12 @@ remindersRouter.get("/new", (req, res) => {
 
 // Edit
 remindersRouter.get("/edit/:id", (req, res) => {
-  Reminders.find({ _id: req.params.id }, (err, allReminders) => {
+  Reminders.find({ _id: req.params.id }, (err, reminder) => {
     if (err) {
       console.log(err.message);
     } else {
       res.render("../views/reminders/edit.ejs", {
-        reminders: allReminders
+        reminder: reminder[0]
       });
     }
   });
@@ -48,12 +48,12 @@ remindersRouter.get("/edit/:id", (req, res) => {
 
 // Show
 remindersRouter.get("/:id", (req, res) => {
-  Reminders.find({ _id: req.params.id }, (err, allReminders) => {
+  Reminders.find({ _id: req.params.id }, (err, reminder) => {
     if (err) {
       console.log(err.message);
     } else {
       res.render("../views/reminders/show.ejs", {
-        reminders: allReminders
+        reminder: reminder[0]
       });
     }
   });
@@ -82,6 +82,49 @@ remindersRouter.post("/new", (req, res) => {
   });
 });
 
-//
+// Update
+remindersRouter.put("/edit/:id", (req, res) => {
+  if (req.body.active === "on") {
+    req.body.active = true;
+  } else {
+    req.body.active = false;
+  }
+  Reminders.find({}, (err, allReminders) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      Reminders.updateOne(
+        { _id: req.params.id },
+        req.body,
+        (error, reminder) => {
+          if (error) {
+            console.log(error.message);
+          } else {
+            console.log(reminder);
+            reminder: reminder[0];
+            res.redirect("/wedding/reminders/" + req.params.id);
+          }
+        }
+      );
+    }
+  });
+});
+
+// Delete
+remindersRouter.delete("/:id", (req, res) => {
+  Reminders.find({}, (err, allReminders) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      Reminders.deleteOne({ _id: req.params.id }, (error, reminder) => {
+        if (error) {
+          console.log(error.message);
+        } else {
+          res.redirect("/wedding/reminders");
+        }
+      });
+    }
+  });
+});
 
 module.exports = remindersRouter;

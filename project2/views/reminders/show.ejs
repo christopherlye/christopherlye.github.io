@@ -9,18 +9,18 @@
   <body>
     <h1>Show Reminder</h1>
     <ul>
-      <% for (let i = 0; i < reminders.length; i++) { %>
-      <li>Name: <%=reminders[i].name%></li>
-      <li>Active: <%=reminders[i].active%></li>
-      <li>Attendee Group: <%=reminders[i].attendeeGroup%></li>
-      <li>Message: <%=reminders[i].message%></li>
-      <% } %>
+      <li>Name: <%=reminder.name%></li>
+      <li>
+        Active: <% if (reminder.active) { %> Yes <% } else { %> No <% } %>
+      </li>
+      <li>Attendee Group: <%=reminder.attendeeGroup%></li>
+      <li>Message: <%=reminder.message%></li>
     </ul>
-    <a href="/wedding/reminders/edit/<%=reminders._id%>"
+    <a href="/wedding/reminders/edit/<%=reminder._id%>"
       ><button>Edit</button></a
     >
     <form
-      action="/wedding/reminders/<%=reminders._id%>?_method=DELETE"
+      action="/wedding/reminders/<%=reminder._id%>?_method=DELETE"
       method="POST"
     >
       <input type="submit" name="delete" id="delete" value="Delete" />
