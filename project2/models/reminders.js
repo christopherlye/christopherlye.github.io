@@ -11,8 +11,8 @@ const Schema = mongoose.Schema; // create shorthand for mongoose Schema construc
 
 const remindersSchema = new Schema(
   {
-    reminderName: { type: String, required: true, unique: true },
-    active: { type: Boolean, required: true },
+    name: { type: String, required: true, unique: true },
+    active: { type: Boolean },
     attendeeGroup: { type: String, required: true },
     message: { type: String, required: true }
   },

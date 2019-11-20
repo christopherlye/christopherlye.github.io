@@ -17,7 +17,15 @@ const Reminders = require("../models/reminders.js");
 
 // Index
 remindersRouter.get("/", (req, res) => {
-  res.render("../views/reminders/index.ejs");
+  Reminders.find({}, (err, allReminders) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      res.render("../views/reminders/index.ejs", {
+        reminders: allReminders
+      });
+    }
+  });
 });
 
 // New
@@ -27,12 +35,28 @@ remindersRouter.get("/new", (req, res) => {
 
 // Edit
 remindersRouter.get("/edit/:id", (req, res) => {
-  res.render("../views/reminders/edit.ejs");
+  Reminders.find({ _id: req.params.id }, (err, allReminders) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      res.render("../views/reminders/edit.ejs", {
+        reminders: allReminders
+      });
+    }
+  });
 });
 
 // Show
 remindersRouter.get("/:id", (req, res) => {
-  res.render("../views/reminders/show.ejs");
+  Reminders.find({ _id: req.params.id }, (err, allReminders) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      res.render("../views/reminders/show.ejs", {
+        reminders: allReminders
+      });
+    }
+  });
 });
 
 // ---------------------------------------------------------------- //
@@ -40,6 +64,24 @@ remindersRouter.get("/:id", (req, res) => {
 // ---------------------------------------------------------------- //
 
 // Create
-// remindersRouter.post('/',)
+remindersRouter.post("/new", (req, res) => {
+  if (req.body.active === "on") {
+    req.body.active = true;
+  } else {
+    req.body.active = false;
+  }
+  Reminders.create(req.body, (err, data) => {
+    if (err) {
+      console.log(err.message);
+      console.log(req.body._id);
+    } else {
+      console.log(data);
+      console.log(req.body);
+      res.redirect("/wedding/reminders");
+    }
+  });
+});
+
+//
 
 module.exports = remindersRouter;
