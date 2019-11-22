@@ -60,6 +60,26 @@ attendeesRouter.get("/new", (req, res) => {
   }
 });
 
+// RSVP
+attendeesRouter.get("/RSVP", (req, res) => {
+  Attendees.find({}, (err, allAttendees) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      Groups.find({}, (error, allGroups) => {
+        if (error) {
+          console.log(error.message);
+        } else {
+          res.render("./attendees/rsvp.ejs", {
+            attendees: allAttendees,
+            groups: allGroups
+          });
+        }
+      });
+    }
+  });
+});
+
 // Delete All
 attendeesRouter.get("/deleteAll", (req, res) => {
   if (req.session.currentUser) {
@@ -159,6 +179,20 @@ attendeesRouter.post("/new", (req, res) => {
   Attendees.create(req.body, (err, data) => {
     console.log(req.body);
     res.redirect("/wedding/attendees/");
+  });
+});
+
+// Create - RSVP
+attendeesRouter.post("/rsvp/new", (req, res) => {
+  if (req.body.attendance === "on") {
+    req.body.attendance = true;
+  } else {
+    req.body.attendance = false;
+  }
+
+  Attendees.create(req.body, (err, data) => {
+    console.log(req.body);
+    res.send("Thank you page");
   });
 });
 

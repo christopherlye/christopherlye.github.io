@@ -18,9 +18,13 @@ const Users = require("../models/users.js");
 
 // New
 sessionsRouter.get("/new", (req, res) => {
-  res.render("sessions/new.ejs", {
-    currentUser: req.session.currentUser
-  });
+  if (req.session.currentUser) {
+    res.redirect("/wedding/attendees");
+  } else {
+    res.render("sessions/new.ejs", {
+      currentUser: req.session.currentUser
+    });
+  }
 });
 
 // ---------------------------------------------------------------- //
