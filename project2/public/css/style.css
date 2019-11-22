@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Caveat&display=swap");
+
+body {
+  font-family: "Alata", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#nav-list {
+  color: rgba(255, 255, 255, 0.8);
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.nav-links {
+  padding: 12px;
+  transition: all 0.5s ease-out;
+}
+
+.nav-links:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 12px;
+  cursor: pointer;
+}
+
+#landing-page {
+  height: 100%;
+  width: 100%;
+  background: url("../images/woman-kissing-a-man-984934.jpg") no-repeat center
+    center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#title-message {
+  margin-left: 81.5%;
+  margin-top: 260px;
+  color: whitesmoke;
+  font-size: 60px;
+}
+
+#RSVP {
+  font-family: "Alata", sans-serif;
+  margin-left: 81.5%;
+  border: none;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 100;
+  text-decoration: none;
+  user-select: none;
+  letter-spacing: 1px;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  transition: all 0.5s ease-out;
+}
+
+#RSVP:hover {
+  color: teal;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#bible-verse {
+  font-family: "Caveat", cursive;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 150px;
+  color: whitesmoke;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+#bible-verse-ref {
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+nav {
+  z-index: 1;
+}

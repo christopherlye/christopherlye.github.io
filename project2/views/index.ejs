@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Zane & Sophie | Our special day</title>
   </head>
   <body>
+      <div id="landing-page">
+          <nav id="main-nav">
+              <div id="nav-list">
+                <div class="nav-links">our story</div>
+                <div class="nav-links">schedule</div>
+                <div class="nav-links">getting there</div>
+                <div class="nav-links">questions</div>
+                <div class="nav-links"><a href="/sessions/new">login</a></div>
+              </div>
+            </nav>
+          <h1 id="title-message">zane <br> & <br> sophie</h1>
+          <button id="RSVP">RSVP here</button>
+          <p id="bible-verse">we love because He first loved us <span id="bible-verse-ref">1 john 4:19</span></p>
+      </div>
     <div class="container">
-<h1>
-  <% if(currentUser) { %>
-    Welcome <%=currentUser.username%>!
-  </h1>
-  <form action="/sessions?_method=DELETE" method="POST">
-    <input type="submit" value="Logout" class="waves-effect waves-light btn"/>
-</form>
-    <h2>
-      <a class="waves-effect waves-light btn" href="/wedding/attendees">Attend the wedding</a>
-    </h2>
-  <% } else { %>
-    <h2>Please </h2>
-    <a class="waves-effect waves-light btn" href="/users/new">Sign Up</a></h2>
-    <h3>or</h3>
-    <a class="waves-effect waves-light btn" href="/sessions/new">Log In</a>
-  <% } %>
+      <h1>
+        <% if(currentUser) { %>
+          Welcome <%=currentUser.username%>!
+        </h1>
+        <form action="/sessions?_method=DELETE" method="POST">
+          <input type="submit" value="Logout" class="waves-effect waves-light btn"/>
+      </form>
+          <h2>
+            <a class="waves-effect waves-light btn" href="/wedding/attendees">Attend the wedding</a>
+          </h2>
+        <% } else { %>
+          <h2>Please </h2>
+          <a class="waves-effect waves-light btn" href="/users/new">Sign Up</a></h2>
+          <h3>or</h3>
+          <a class="waves-effect waves-light btn" href="/sessions/new">Log In</a>
+        <% } %>
     </div>
   </body>
 </html>
