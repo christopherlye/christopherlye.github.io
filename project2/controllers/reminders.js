@@ -22,7 +22,8 @@ remindersRouter.get("/", (req, res) => {
       console.log(err.message);
     } else {
       res.render("../views/reminders/index.ejs", {
-        reminders: reminders
+        reminders: reminders,
+        currentUser: req.session.currentUser
       });
     }
   });

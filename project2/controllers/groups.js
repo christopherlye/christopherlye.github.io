@@ -23,7 +23,8 @@ groupsRouter.get("/", (req, res) => {
         console.log(err.message);
       } else {
         res.render("../views/groups/index.ejs", {
-          groups: allGroups
+          groups: allGroups,
+          currentUser: req.session.currentUser
         });
       }
     });

@@ -79,7 +79,7 @@ a {
   letter-spacing: 1px;
   padding: 20px 40px;
   text-transform: uppercase;
-  transition: all 0.5s ease-out;
+  transition: 0.5s ease-out;
   outline: none;
 }
 
@@ -151,7 +151,7 @@ a {
   height: 450px;
   padding: 30px;
   margin: 0 auto;
-  margin-top: 5%;
+  margin-top: 10%;
   /* margin-left: 75%; */
 }
 
@@ -237,8 +237,8 @@ a {
 .rsvp-page {
   height: 100%;
   width: 100%;
-  background: url("../images/newlyweds-holding-hands-1683989.jpg") no-repeat
-    center center;
+  background: url("../images/affection-blur-close-up-couple-412295.jpg")
+    no-repeat center center;
   background-size: cover;
   position: absolute;
   top: 0px;
@@ -389,4 +389,18 @@ a {
   -moz-transition: all 0.3s ease-out;
   -ms-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
+}
+
+/* Thank You Page */
+.thank-you-page {
+  height: 100%;
+  width: 100%;
+  background: url("../images/affection-blur-close-up-couple-412295.jpg")
+    no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  z-index: -1;
 }

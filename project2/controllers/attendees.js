@@ -32,7 +32,8 @@ attendeesRouter.get("/", (req, res) => {
           } else {
             res.render("./attendees/index.ejs", {
               attendees: allAttendees,
-              groups: allGroups
+              groups: allGroups,
+              currentUser: req.session.currentUser
             });
           }
         });
@@ -61,7 +62,7 @@ attendeesRouter.get("/new", (req, res) => {
 });
 
 // RSVP
-attendeesRouter.get("/RSVP", (req, res) => {
+attendeesRouter.get("/rsvp", (req, res) => {
   Attendees.find({}, (err, allAttendees) => {
     if (err) {
       console.log(err.message);
@@ -70,7 +71,27 @@ attendeesRouter.get("/RSVP", (req, res) => {
         if (error) {
           console.log(error.message);
         } else {
-          res.render("./attendees/rsvp.ejs", {
+          res.render("./rsvp/rsvp.ejs", {
+            attendees: allAttendees,
+            groups: allGroups
+          });
+        }
+      });
+    }
+  });
+});
+
+// Thank you
+attendeesRouter.get("/thankyou", (req, res) => {
+  Attendees.find({}, (err, allAttendees) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      Groups.find({}, (error, allGroups) => {
+        if (error) {
+          console.log(error.message);
+        } else {
+          res.render("./rsvp/thankyou.ejs", {
             attendees: allAttendees,
             groups: allGroups
           });
@@ -192,7 +213,7 @@ attendeesRouter.post("/rsvp/new", (req, res) => {
 
   Attendees.create(req.body, (err, data) => {
     console.log(req.body);
-    res.send("Thank you page");
+    res.redirect("/wedding/attendees/thankyou/");
   });
 });
 
