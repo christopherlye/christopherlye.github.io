@@ -18,7 +18,9 @@ const Users = require("../models/users.js");
 
 // New
 usersRouter.get("/new", (req, res) => {
-  res.render("../views/users/new.ejs");
+  res.render("../views/users/new.ejs", {
+    currentUser: req.session.currentUser
+  });
 });
 
 // ---------------------------------------------------------------- //

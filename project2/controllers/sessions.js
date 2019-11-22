@@ -18,7 +18,9 @@ const Users = require("../models/users.js");
 
 // New
 sessionsRouter.get("/new", (req, res) => {
-  res.render("sessions/new.ejs");
+  res.render("sessions/new.ejs", {
+    currentUser: req.session.currentUser
+  });
 });
 
 // ---------------------------------------------------------------- //
