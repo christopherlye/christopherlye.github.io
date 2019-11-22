@@ -155,6 +155,7 @@ attendeesRouter.post("/new", (req, res) => {
   } else {
     req.body.attendance = false;
   }
+
   Attendees.create(req.body, (err, data) => {
     console.log(req.body);
     res.redirect("/wedding/attendees/");
