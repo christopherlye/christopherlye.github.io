@@ -41,7 +41,7 @@ sessionsRouter.post("/", (req, res) => {
       // compareSync function will return true or false and will be determining if the passwords match.
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;
-        res.redirect("/");
+        res.redirect("/wedding/attendees");
         // if passwords don't match, handle the error
       } else {
         res.send('<a href="/">wrong password</a>');

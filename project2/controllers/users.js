@@ -39,7 +39,7 @@ usersRouter.post("/", (req, res) => {
       console.log(err);
     } else {
       console.log(createdUser);
-      res.redirect("/");
+      res.redirect("/sessions/new");
     }
   });
 });

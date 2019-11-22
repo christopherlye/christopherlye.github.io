@@ -5,82 +5,47 @@
     <title>Zane & Sophie | Login</title>
   </head>
   <body>
-    <div id="landing-page">
-      <nav id="main-nav">
-        <div id="nav-list">
-          <div class="nav-links">our story</div>
-          <div class="nav-links">schedule</div>
-          <div class="nav-links">getting there</div>
-          <div class="nav-links">questions</div>
-          <% if (currentUser) { %>
-          <div class="nav-links">
-            <form action="/sessions?_method=DELETE" method="POST">
-              <input
-                type="submit"
-                value="logout <%=currentUser.username%>"
-                class="nav-links"
-                id="logout"
-              />
-            </form>
+    <div class="login-page">
+      <div class="login-form-container">
+        <form class="login-form" action="/users" method="POST">
+          <div class="divider"></div>
+          <div class="login-header">
+            <h1>new user</h1>
           </div>
-          <% } else { %>
-          <div class="nav-links"><a href="/sessions/new">login</a></div>
-          <% } %>
-        </div>
-      </nav>
-      <div id="login-page">
-        <div id="login-form-container">
-          <form class="col s12" action="/users" method="POST">
-            <div class="row">
-              <div class="input-field col s6">
-                <label for="username">User Name</label>
-                <input
-                  placeholder="Placeholder"
-                  id="username"
-                  type="text"
-                  class="validate"
-                  name="username"
-                  required
-                />
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="password">Password</label>
-                <input
-                  id="password"
-                  type="password"
-                  class="validate"
-                  name="password"
-                  required
-                />
-              </div>
-            </div>
-            <button
-              class="btn waves-effect waves-light"
-              type="submit"
-              name="action"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-        <div id="create-account">
-          <a id="create-account-link" href="/sessions/new"
-            >Existing user? Login</a
-          >
-        </div>
+          <div>
+            <label for="username" class="login-labels">User Name</label>
+            <input
+              placeholder="username"
+              class="username"
+              type="text"
+              name="username"
+              required
+            />
+          </div>
+          <div>
+            <label for="password" class="login-labels">Password</label>
+            <input
+              placeholder="password"
+              class="password"
+              type="password"
+              name="password"
+              required
+            />
+          </div>
+          <button type="submit" name="action" class="login-button">
+            create
+          </button>
+        </form>
       </div>
-      <!-- <h1 id="title-message">
-        zane <br />
-        & <br />
-        sophie
-      </h1>
-      <button id="RSVP">RSVP here</button>
-      <p id="bible-verse">
-        we love because He first loved us
-        <span id="bible-verse-ref">1 john 4:19</span>
-      </p> -->
+      <span class="pipe">‹</span>
+      <div class="back">
+        <a class="back-link" href="/">Back</a>
+      </div>
+      <div class="create-account">
+        <a class="create-account-link" href="/sessions/new"
+          >Existing user? Login</a
+        >
+      </div>
     </div>
   </body>
 </html>

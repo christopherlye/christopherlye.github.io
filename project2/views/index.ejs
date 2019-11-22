@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href="/css/style.css" />
+    <% include ../views/partials/head.ejs %>
     <title>Zane & Sophie | Our special day</title>
   </head>
   <body>
@@ -17,7 +17,7 @@
             <form action="/sessions?_method=DELETE" method="POST">
               <input
                 type="submit"
-                value="logout <%=currentUser.username%>"
+                value="logout | <%=currentUser.username%>"
                 class="nav-links"
                 id="logout"
               />
