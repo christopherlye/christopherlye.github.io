@@ -61,14 +61,15 @@ a {
 
 #title-message {
   margin-left: 81.5%;
-  margin-top: 240px;
+  margin-top: 10%;
   color: whitesmoke;
   font-size: 60px;
 }
 
 #RSVP,
 .login-button,
-.rsvp-button {
+.rsvp-button,
+.thank-you-button {
   font-family: "Alata", sans-serif;
   margin-left: 81.5%;
   border: none;
@@ -85,14 +86,16 @@ a {
 
 #RSVP:hover,
 .login-button:hover,
-.rsvp-button:hover {
+.rsvp-button:hover,
+.thank-you-button:hover {
   color: teal;
   border-radius: 25px;
   cursor: pointer;
 }
 
 .login-button,
-.rsvp-button {
+.rsvp-button,
+.thank-you-button {
   margin: 0 auto;
   margin-top: 15px;
   width: 80%;
@@ -101,15 +104,20 @@ a {
 }
 
 .login-button:hover,
-.rsvp-button:hover {
+.rsvp-button:hover,
+.thank-you-button:hover {
   color: white;
+}
+
+.thank-you-button {
+  margin-left: 30px;
 }
 
 #bible-verse {
   font-family: "Caveat", cursive;
   text-align: center;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 120px;
   color: whitesmoke;
   font-size: 30px;
   letter-spacing: 2px;
@@ -152,6 +160,16 @@ a {
   padding: 30px;
   margin: 0 auto;
   margin-top: 10%;
+  /* margin-left: 75%; */
+}
+
+.thank-you-container {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 350px;
+  height: 300px;
+  padding: 30px;
+  margin: 0 auto;
+  margin-top: 15%;
   /* margin-left: 75%; */
 }
 
