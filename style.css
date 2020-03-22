@@ -94,3 +94,21 @@ a {
 .projectImg {
   width: 100%;
 }
+
+@media (min-width: 990px) {
+  .projectCardsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+  }
+  .projectCard {
+    width: 600px;
+    margin: 30px;
+    transition: box-shadow 0.5s;
+  }
+  .projectCard:hover {
+    /* border: 2px solid grey; */
+    box-shadow: 2px 2px 20px grey;
+  }
+}
