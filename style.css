@@ -1,12 +1,96 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap"); */
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("./assets/fonts/OpenSans-Regular.ttf") format("ttf");
+}
 
 body {
   margin: 0;
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", monospace;
+  box-sizing: border-box;
+  background-color: rgb(24, 24, 24);
+  color: whitesmoke;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h2 {
+  font-size: 16px;
+  color: lightgrey;
 }
 
 p {
-  margin: 0 auto;
-  width: 400px;
+  color: rgba(150, 150, 150, 0.5);
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-rows: 35vh 65vh;
+}
+
+/* Title Section */
+.titleContainer {
+  margin: auto 0;
+  padding: 40px 0;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgb(24, 24, 24);
+  width: 100vw;
+  height: 100%;
+}
+.imgContainer {
+  height: 50%;
+}
+.title {
+  font-size: 24px;
+  font-variant: small-caps;
+}
+.subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(150, 150, 150, 0.3);
+  text-transform: lowercase;
+  text-decoration-line: overline;
+  text-decoration-color: rgba(150, 150, 150, 0.3);
+  letter-spacing: 3px;
+}
+.profilePic {
+  height: 100%;
+}
+
+.curlyBracket {
+  display: inline-block;
+}
+.leftRightBracket {
+  font-size: 40px;
+  vertical-align: top;
+  color: grey;
+}
+
+/* Project Section */
+.projectCardsContainer {
+  overflow: scroll;
+  padding: 0 40px;
+  background-color: rgb(20, 20, 20);
+}
+.projectCard {
+  padding: 30px;
+  text-align: justify;
+  background-color: rgb(24, 24, 24);
+  border-radius: 15px;
+  margin: 30px 0;
+}
+.projectImg {
+  width: 100%;
 }
