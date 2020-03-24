@@ -80,7 +80,7 @@ a {
   height: 100%;
 }
 
-.curlyBracket {
+.inline-el {
   display: inline-block;
 }
 .leftRightBracket {
@@ -126,7 +126,7 @@ a {
     width: 100%;
     padding-left: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 1fr;
     align-items: center;
   }
